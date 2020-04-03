@@ -1,0 +1,35 @@
+body {
+    background-color: #002D62;
+    color: #EB6E1F;
+}
+
+.container {
+    background: #F4911E;
+    color: #002D62;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+a {
+    color: white;
+}
+
+li a {
+    color: #F9A01B;
+}
+
+.white_text {
+    color: white;
+}
+
+.white_text p {
+    color: white;
+}
+
+.white-space {
+    color: white;
+}
+
+.hidden_text {
+    color: #8d3639;
+}
