@@ -13,9 +13,20 @@
 </head>
 
 <body>
-    <h1>Covid 19 Tracker</h1>
+    <h1>Covid 19 Tracker - Latest</h1>
     <div class="container">
         <h4>Covid 19</h4>
+        {% for item in new_data_dict.items %}
+        <h6>{{ item.1.state_abbr }}</h6>
+        <h6>Positive Tests: {{ item.1.positive_tests }}</h6>
+        <h6>Negative Tests: {{ item.1.negative_tests }}</h6>
+        <h6>Pending Tests: {{ item.1.pending_tests }}</h6>
+        <h6>Hospitalized Currently: {{ item.1.hospitalized_currently }}</h6>
+        <h6>Hospitalized Cumulative: {{ item.1.hospitalized_cumulative }}</h6>
+        <br>
+        <h6>{{ item.1 }}</h6>
+        <br> {% endfor %}
+        <br>
     </div>
     <script src="" async defer></script>
 </body>

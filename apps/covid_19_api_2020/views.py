@@ -56,3 +56,79 @@ def index(request):
                 'recovered': recovered
             }
     return render(request, 'covid_19_api_2020/index.html', {"data_dict": data_dict})
+
+
+def latest(request):
+    new_data_dict = {}
+    # context = {}
+    url = "https://covidtracking.com/api/states"
+    response = requests.get(url)
+    data = response.json()
+    # print(data)
+    # for item in data:
+    #     for key, value in item.items():
+    #         print(key)
+    #         print(value)
+    #         print("\n")
+        # print(data[item])
+        # state_abbr = data[item]['state']
+        # print(state_abbr)
+        # positive_tests = data[item]['positive']
+        # print("Positive Tests: {}".format(positive_tests))
+        # negative_tests = data[item]['negative']
+        # print("Negative Tests: {}".format(negative_tests))
+        # pending_tests = data[item]['pending']
+        # print("Pending Tests: {}".format(pending_tests))
+        # hospitalized_currently = data[item]['hospitalizedCurrently']
+        # print("Hospitalized Currently: {}".format(hospitalized_currently))
+        # hospitalized_cumulative = data[item]['hospitalizedCumulative']
+        # print("Hospitalized Cumulative: {}".format(hospitalized_cumulative))
+        # # positive_score = data[item]['positiveScore']
+        # # print("Positive Score: {}".format(positive_score))
+        # # negative_score = data[item]['negativeScore']
+        # # print("Negative Score: {}".format(negative_score))
+        # # negative_regular_score = data[item]['negativeRegularScore']
+        # # print("Negative Regular Score: {}".format(negative_regular_score))
+        # # grade = data[item]['grade']
+        # # print("Grade: {}".format(grade))
+        # pending = data[item]['pending']
+        # print("Pending: {}".format(pending))
+        # print("\n")
+    print(data)
+    context = {
+        'data': data,
+    }
+    for item in range(0, len(data)):
+        print(data[item])
+        state_abbr = data[item]['state']
+        print(state_abbr)
+        positive_tests = data[item]['positive']
+        print("Positive Tests: {}".format(positive_tests))
+        negative_tests = data[item]['negative']
+        print("Negative Tests: {}".format(negative_tests))
+        pending_tests = data[item]['pending']
+        print("Pending Tests: {}".format(pending_tests))
+        hospitalized_currently = data[item]['hospitalizedCurrently']
+        print("Hospitalized Currently: {}".format(hospitalized_currently))
+        hospitalized_cumulative = data[item]['hospitalizedCumulative']
+        print("Hospitalized Cumulative: {}".format(hospitalized_cumulative))
+        # negative_score = data[item]['negativeScore']
+        # print("Negative Score: {}".format(negative_score))
+        # negative_regular_score = data[item]['negativeRegularScore']
+        # print("Negative Regular Score: {}".format(negative_regular_score))
+        # grade = data[item]['grade']
+        # print("Grade: {}".format(grade))
+        pending = data[item]['pending']
+        print("Pending: {}".format(pending))
+        date_checked = data[item]['dateChecked']
+        print("Date Checked: {}".format(date_checked))
+        new_data_dict[item] = {
+            "state_abbr": state_abbr,
+            "positive_tests": positive_tests,
+            "negative_tests": negative_tests,
+            "pending_tests": pending_tests,
+            "hospitalized_currently": hospitalized_currently,
+            "hospitalized_cumulative": hospitalized_cumulative
+        }
+        print("\n")
+    return render(request, 'covid_19_api_2020/latest.html', {"new_data_dict": new_data_dict})
